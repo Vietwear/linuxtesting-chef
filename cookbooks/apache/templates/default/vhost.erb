@@ -1,0 +1,33 @@
+#Template Virtual Host File
+<% if  @port==80 -%>
+       NameVirtualHost *:80
+<% end -%>
+ 
+<VirtualHost *:<%= @port %> >
+  #ServerAdmin {USER}@cslavoie.com
+  ServerName <%= @domain %>
+  #ServerAlias www.{DOMAIN}
+  #ServerAlias {USER}.localhost
+  #ServerAlias {USER}.static.cslavoie.com
+
+  DocumentRoot <%= @document_root%>
+
+<Directory />
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+ </Directory> 
+    
+ 
+
+<Directory <%= @document_root%> >
+    
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                allow from all
+ 
+  </Directory>
+  
+</VirtualHost>
