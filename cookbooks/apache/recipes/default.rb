@@ -28,7 +28,8 @@ template template_location do
     source "vhost.erb"
     mode "0644"
     variables( :document_root => document_root,:port=>data["port"],
-             :domain=>data["domain"]
+             :domain=>data["domain"],
+               :author_name=>node["author"]["name"]
 
     )
     notifies :restart,"service[httpd]"
